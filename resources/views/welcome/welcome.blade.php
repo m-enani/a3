@@ -1,41 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('layouts.master')
 
-    <title>Lunch Out!</title>
-    <meta charset="utf-8">
+@section('title')
+    Lunch Out
+@endsection
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-      <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Google Fonts -->
-    <link href='//fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-
+@push('head')
     <link href='css/main.css' rel='stylesheet'>
+@endpush
 
-</head>
-
-<body>
-    <div class="container-fluid" id="top">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>LUNCH OUT!</h1>
-            </div>
-        </div>
-    <div class="row">
-        <div class="col-md-12">
-            <img id="topImage" src="{{asset('/images/out_to_lunch.jpg')}}" alt="Out to Lunch"/>
-        </div>
-    </div>
-
+@section('content')
     <form  method='GET' action='index.php'>
         <div class="row">
             <div class="col-md-12">
@@ -73,7 +46,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-        <label for="usr">Maximum Wait Time (mins)</label>
+        <label for="usr">Maximum amount of time you are will to wait (mins): </label>
              <input type="text" class="form-control" name ="waitTime" id="usr">
         </div>
     </div>
@@ -85,7 +58,4 @@
         </div>
     </div>
     </form>
-
-  </div>
-</body>
-</html>
+@endsection
