@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', 'Welcome@index');
+Route::get('/search', 'Restaurants@search');
+
+Route::get('/', 'Restaurants@index');
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

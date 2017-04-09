@@ -42,7 +42,7 @@
         </footer>
 
     </div>
-    
+
     @stack('body')
 
 </body>
