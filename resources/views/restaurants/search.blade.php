@@ -54,7 +54,7 @@
         <div class="col-md-12">
             <br>
             <input type="submit" class="btn btn-primary btn-small">
-            <a href="\" class="btn btn-success">Back</a>
+            <a href="\" class="btn btn-success">Clear Results</a>
         </div>
     </div>
     </form>

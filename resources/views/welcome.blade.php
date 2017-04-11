@@ -9,6 +9,7 @@
 @endpush
 
 @section('content')
+
     <form  method='GET' action='/search'>
         <div class="row">
             <div class="col-md-12">
