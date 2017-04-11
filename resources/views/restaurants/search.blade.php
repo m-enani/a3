@@ -17,7 +17,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <label for="cusinieType">Cuisine:</label>
+            <label for="cusinieType">Cuisine(required):</label>
                 <select name="cuisineType" class="form-control" id="cusinieType">
                 <option @if(old('cuisineType') == 'Any') selected @endif>Any</option>
                 <option @if(old('cuisineType') == 'Chinese') selected @endif>Chinese</option>
@@ -31,7 +31,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <label>Budget:</label><br>
+            <label>Budget(required):</label><br>
             <label class="radio-inline"><input type="radio" name="budget" value="high" @if(old('budget') == 'high') checked @endif>High</label>
             <label class="radio-inline"><input type="radio" name="budget" value="medium" @if(old('budget') == 'medium') checked @endif>Medium</label>
             <label class="radio-inline"><input type="radio" name="budget" value="low" @if(old('budget') == 'low') checked @endif>Low</label>
@@ -39,14 +39,14 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <label>Dine in/Take out?</label><br>
+            <label>Dine in/Take out?(required)</label><br>
             <label class="radio-inline"><input type="radio" name="dineInOrOut" value='in' @if(old('dineInOrOut') == 'in') checked @endif>Dine-in</label>
             <label class="radio-inline"><input type="radio" name="dineInOrOut" value='out' @if(old('dineInOrOut') == 'out') checked @endif>Take-out</label>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-        <label for="usr">Maximum amount of time you are willing to wait (mins): </label>
+        <label for="usr">Maximum amount of time (mins) you are willing to wait (required): </label>
              <input type="text" class="form-control" name ="waitTime" id="usr" value='{{old('waitTime')}}'>
         </div>
     </div>
