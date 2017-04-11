@@ -13,40 +13,43 @@ class Restaurants extends Controller
 
     public function search(Request $request) {
 
-        // dump($request->all());
-        //  dump($request->input('cuisineType'));
-
+        # store search results
         $filteredRestaurants = [];
+
+        # validate form options
+        $this->validate($request, [
+            'budget' => 'required',
+            'dineInOrOut' => 'required',
+            'waitTime' => 'required|numeric',
+        ]);
 
         $restaurantsRawData = file_get_contents(database_path().'/restaurants.json');
 
         $restaurants = json_decode($restaurantsRawData, true);
 
         foreach($restaurants as $restaurant) {
-            // filter if no cuisine type is selected
-            if (strtolower($request->input('cuisineType')) == 'any' && $request->input('budget') == $restaurant['price']  && $request->input('optInOut') == $restaurant['dining']  &&  $request->input('waitTime') >= $restaurant['wait_time']){
+            # filter if no cuisine type is selected
+            if (strtolower($request->input('cuisineType')) == 'any' && $request->input('budget') == $restaurant['price']  && $request->input('dineInOrOut') == $restaurant['dining']  &&  $request->input('waitTime') >= $restaurant['wait_time']){
               $filteredRestaurants[] = $restaurant;
             }
-            // filter on all forms
-            else if (strtolower($request->input('cuisineType')) == $restaurant['type'] && $request->input('budget') == $restaurant['price'] &&  $request->input('optInOut') == $restaurant['dining'] && $request->input('waitTime') >= $restaurant['wait_time']){
+            # filter on all forms
+            else if (strtolower($request->input('cuisineType')) == $restaurant['type'] && $request->input('budget') == $restaurant['price'] &&  $request->input('dineInOrOut') == $restaurant['dining'] && $request->input('waitTime') >= $restaurant['wait_time']){
               $filteredRestaurants[] = $restaurant;
             }
          }
-        // sort the array by restaurant name
+
+        # sort the array by restaurant name
         $filteredRestaurants = array_values(array_sort($filteredRestaurants, function ($value) {
             return $value['name'];
         }));
 
-        // function sortResturants($a,$b) {
-        //     if ($a['name']==$b['name']) return 0;
-        //     return ($a['name']<$b['name'])?-1:1;
-        // }
-        //
-        // usort($filteredRestaurants, array($this, 'sortResturants'));
+        # retain data on next view
+        $request->flash();
 
+        # return search results and counter(used for displaying option number) 
         return view('restaurants.search', [
             'filteredRestaurants' => $filteredRestaurants,
-            'counter' => '1'
+            'counter' => '1',
         ]);
     }
 }

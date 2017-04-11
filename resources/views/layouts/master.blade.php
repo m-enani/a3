@@ -37,12 +37,7 @@
             @yield('content')
         </section>
 
-        <footer>
-            <h4 id="toTop"><a href="#top">Back to Top</a></h4>
-        </footer>
-
     </div>
-
     @stack('body')
 
 </body>
